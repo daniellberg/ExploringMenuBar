@@ -8,10 +8,20 @@
 import SwiftUI
 
 @main
-struct firstMenuBarApp: App {
+struct FirstMenuBarApp: App {
+
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        MenuBarExtra("Demo", systemImage: "star.fill") {
+
+            Button("Hello 👋") {
+                print("Hello from menu bar")
+            }
+
+            Divider()
+
+            Button("Quit") {
+                NSApplication.shared.terminate(nil)
+            }
         }
     }
 }
