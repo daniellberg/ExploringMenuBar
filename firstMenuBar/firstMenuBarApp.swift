@@ -10,7 +10,9 @@ import SwiftUI
 
 @main
 struct MyApp: App {
+    @State private var count = 0
     @State private var textInput: String = "What are you counting?"
+
     
     var body: some Scene {
         
@@ -20,27 +22,36 @@ struct MyApp: App {
                     .font(.system(size: 14, weight: .semibold, design: .monospaced))
                     .padding()
                 
-                Divider()
                 
                 TextField("Enter text here", text: $textInput)
                     .textFieldStyle(.roundedBorder)
                     .multilineTextAlignment(.center)
                     .padding()
+                
+                Divider()
+                
+                Text("Count: \(count)")
+                    .font(.system(size: 14, weight: .semibold, design: .monospaced))
+                    .padding()
+
                 HStack{
                     Button("+1"){
-                        print("Hi!")
+                        count+=1
+                        print(count)
                     }
                     .font(.headline)
                     .foregroundColor(.white)
+                    .controlSize(.large)
 //                    .background(Color.blue)
                     .cornerRadius(10)
                     
-                    
                     Button("-1"){
-                        print("Hi!")
+                        count-=1
+                        print(count)
                     }
                     .font(.headline)
                     .foregroundColor(.white)
+                    .controlSize(.large)
 //                    .background(Color.blue)
                     .cornerRadius(10)
 
@@ -50,6 +61,6 @@ struct MyApp: App {
 
             }
         }
-        .menuBarExtraStyle(.window) // Use window style for a custom view
+        .menuBarExtraStyle(.window)
     }
 }
